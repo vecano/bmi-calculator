@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Body Mass Index</title>
+  <title>Calculating Body Mass Index</title>
   <meta charset="utf-8">
-  <meta name="description" content="Body Mass Index">
+  <meta name="description" content="Calculating Body Mass Index">
   <meta name="author" content="Vicente E. Cano">
   <meta name="generator" content="slidify" />
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -32,8 +32,8 @@
     <!-- LOGO SLIDE -->
         <slide class="title-slide segue nobackground">
   <hgroup class="auto-fadein">
-    <h1>Body Mass Index</h1>
-    <h2>Calculating the Body Mass Index</h2>
+    <h1>Calculating Body Mass Index</h1>
+    <h2>Body Mass Index (BMI) attempts to quantify an individual's tissue mass</h2>
     <p>Vicente E. Cano<br/></p>
   </hgroup>
   <article></article>  
@@ -46,13 +46,17 @@
     <h2>What is the Body Mass Index</h2>
   </hgroup>
   <article data-timings="">
-    <p>The body mass index (BMI) is a value derived from the mass (weight) and height of an individual. The BMI is defined as the body mass divided by the square of the body height.</p>
+    <p>The Body Mass Index (BMI) is a value derived from the mass (weight) and height of an individual. The BMI is defined as the body mass divided by the square of the body height. The BMI is an attempt to quantify the amount of tissue mass (muscle, fat, and bone) in an individual, and then categorize that person as underweight, normal weight, overweight, or obese based on that value. [1]</p>
 
-<p>The equation is:</p>
+<p>The equation (where weight is measured in pounds and height is measured in inches) is described as:</p>
 
 <p>\[BMI = {703 \times {weight} \over {height^2}}.\]</p>
 
-<p>Where weight is in pounds and height is in inches.</p>
+<h3>References</h3>
+
+<ol>
+<li><a href="https://en.wikipedia.org/wiki/Body_mass_index">Wikipedia&#39;s Body Mass Index Article</a></li>
+</ol>
 
   </article>
   <!-- Presenter Notes -->
@@ -60,27 +64,21 @@
 
 <slide class="" id="slide-2" style="background:;">
   <hgroup>
-    <h2>Scale</h2>
+    <h2>BMI Categories</h2>
   </hgroup>
   <article data-timings="">
-    <ul>
-<li>Underweight = &lt; 18.5</li>
-<li>Normal weight = 18.5 – 24.9</li>
-<li>Overweight = 25 – 29.9</li>
-<li>Obesity = BMI of 30 or greater</li>
+    <p>The BMI of an individual can grouped into categories based on the height and weight of that individual when entered into the BMI equation. These categories are:</p>
+
+<ul>
+<li>Very severely underweight: &lt; 15.0</li>
+<li>Severely underweight: 15 – 15.9</li>
+<li>Underweight: 16 – 18.49</li>
+<li>Normal weight: 18.5 – 24.9</li>
+<li>Overweight: 25 – 29.9</li>
+<li>Obese Class I (Moderately obese): 30 – 34.9</li>
+<li>Obese Class II (Severely obese): 35 – 39.9</li>
+<li>Obese Class III (Very severely obese): 40 or greater</li>
 </ul>
-
-<h3>Examples</h3>
-
-<pre><code class="r">sum(1:10)
-</code></pre>
-
-<pre><code>## [1] 55
-</code></pre>
-
-<h3>Online Application</h3>
-
-<p><a href="https://vecano.shinyapps.io/shiny-app/">BMI Calculator</a></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -88,20 +86,51 @@
 
 <slide class="" id="slide-3" style="background:;">
   <hgroup>
-    <h2>Pros</h2>
+    <h2>Examples</h2>
   </hgroup>
   <article data-timings="">
-    
+    <p>An individual whose height is 5&#39;11&quot; and weight is 155 pounds would be under a normal weight:</p>
+
+<pre><code class="r">bmi &lt;- function(height, weight) {
+  return(703 * weight / height^2)
+}
+
+bmi(71, 155)
+</code></pre>
+
+<pre><code>## [1] 21.61575
+</code></pre>
+
+<p>But if that same individual where to increase its weight to 200 pounds, he would be in the overweight category:</p>
+
+<pre><code class="r">bmi(71, 200)
+</code></pre>
+
+<pre><code>## [1] 27.89129
+</code></pre>
+
   </article>
   <!-- Presenter Notes -->
 </slide>
 
 <slide class="" id="slide-4" style="background:;">
   <hgroup>
-    <h2>Cons</h2>
+    <h2>Online Application and Limitations</h2>
   </hgroup>
   <article data-timings="">
-    
+    <h3>Online Application</h3>
+
+<p>I have created a <code>shinyapp</code> for calculating the BMI of an individual. It can be found at <a href="https://vecano.shinyapps.io/bmi-application/">BMI Calculator</a>. This application contains two slider bars to enter the height and weight of an individual and provides the BMI based on these parameters.</p>
+
+<h3>Limitations</h3>
+
+<p>BMI is useful because it is a simple way to assess the health of an individual but it has certain limitations, some examples are:</p>
+
+<ul>
+<li>It does not take into account variation in physical characteristics. It adds roughly 10% for a large (or tall) frame and subtracts roughly 10% for a smaller frame (short stature).</li>
+<li>It does not differentiate between muscle mass and fat mass. BMI is particularly inaccurate for people who are very fit or athletic, as their high muscle mass can classify them in the overweight category by BMI.</li>
+</ul>
+
   </article>
   <!-- Presenter Notes -->
 </slide>
@@ -118,19 +147,19 @@
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=2 title='Scale'>
+        data-slide=2 title='BMI Categories'>
          2
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=3 title='Pros'>
+        data-slide=3 title='Examples'>
          3
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=4 title='Cons'>
+        data-slide=4 title='Online Application and Limitations'>
          4
       </a>
     </li>
